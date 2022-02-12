@@ -6,7 +6,9 @@ public class TheatreSeatAllocation {
 
     private static final int NO_OF_ROWS = 3;
     private static final int NO_OF_COLUMNS = 5;
-    List<String> seatsAvailable = new LinkedList<String>();
+
+    List<String> seatsAvailable = new LinkedList<>();
+    List<String> updatedSeatsList = new ArrayList<>();
     List<String> seatsAllocated = new ArrayList<>();
 
     public boolean validateUserInput(int numberOfSeatsRequired) {
@@ -32,5 +34,19 @@ public class TheatreSeatAllocation {
         return seatsAvailable;
     }
 
+    public List allocateSeats(int numberOfSeatsRequired) {
+        List allocated = new ArrayList();
+
+        if (seatListCreation().size() >= numberOfSeatsRequired) {
+            for (int i = 0; i <= numberOfSeatsRequired - 1; i++) {
+                allocated.add(seatsAvailable.get(i));
+            }
+            seatsAvailable.removeAll(allocated);
+            System.out.println(allocated);
+            System.out.println(seatsAvailable);
+            updatedSeatsList.addAll(seatsAvailable);
+        }
+        return allocated;
+    }
 
 }
