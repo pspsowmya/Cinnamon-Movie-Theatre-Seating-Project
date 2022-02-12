@@ -35,7 +35,7 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation() throws Exception {
+    public void checkSeatAllocation1() throws Exception {
         //Arrange
         TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
@@ -145,7 +145,7 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation8() throws Exception {
+    public void checkSeatAllocation8() {
         //Arrange
         TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
 

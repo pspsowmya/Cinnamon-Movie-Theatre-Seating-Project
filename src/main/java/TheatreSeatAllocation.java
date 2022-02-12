@@ -24,6 +24,7 @@ public class TheatreSeatAllocation {
         }
     }
 
+
     //Method to validate user input
     public boolean validateUserInput(int numberOfSeatsRequired) {
         boolean isValid = false;
@@ -36,18 +37,18 @@ public class TheatreSeatAllocation {
 
     //Method to allocate seats based on user request
     public List allocateSeats(int numberOfSeatsRequired) throws Exception {
-        List allocated = new ArrayList();
+        List seatsAllocated = new ArrayList();
         if (validateUserInput(numberOfSeatsRequired)) {
             if (seatsAvailable.size() >= numberOfSeatsRequired) {
                 for (int i = 0; i <= numberOfSeatsRequired - 1; i++) {
-                    allocated.add(seatsAvailable.get(i));
+                    seatsAllocated.add(seatsAvailable.get(i));
                 }
-                seatsAvailable.removeAll(allocated);
+                seatsAvailable.removeAll(seatsAllocated);
             } else {
                 throw new Exception("No seats left. Please try for another movie... !!");
             }
         }
-        return allocated;
+        return seatsAllocated;
     }
 
 }
