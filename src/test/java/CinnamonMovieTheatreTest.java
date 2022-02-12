@@ -1,19 +1,23 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CinnamonMovieTheatreTest {
 
+    TheatreSeatAllocation theatreSeatAllocation;
+
+    @BeforeEach
+    public void setup() {
+        theatreSeatAllocation = new TheatreSeatAllocation();
+    }
 
     @Test
+    @Order(1)
     public void checkUserInputForValidNumberOfSeats() {
-        //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
-
         //Act
         boolean isValidInput = theatreSeatAllocation.validateUserInput(3);
 
@@ -22,10 +26,8 @@ public class CinnamonMovieTheatreTest {
     }
 
     @Test
+    @Order(2)
     public void checkUserInputForInvalidNumberOfSeats() {
-        //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
-
         //Act
         boolean isValidInput = theatreSeatAllocation.validateUserInput(8);
 
@@ -35,9 +37,9 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation1() throws Exception {
+    @Order(3)
+    public void checkSeatAllocationForFirstRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("A1");
         expectedList.add("A2");
@@ -50,9 +52,9 @@ public class CinnamonMovieTheatreTest {
     }
 
     @Test
-    public void checkSeatAllocation2() throws Exception {
+    @Order(4)
+    public void checkSeatAllocationForSecondRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("A3");
         expectedList.add("A4");
@@ -66,9 +68,9 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation3() throws Exception {
+    @Order(5)
+    public void checkSeatAllocationForThirdRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("A5");
 
@@ -80,9 +82,9 @@ public class CinnamonMovieTheatreTest {
     }
 
     @Test
-    public void checkSeatAllocation4() throws Exception {
+    @Order(6)
+    public void checkSeatAllocationForFourthRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("B1");
         expectedList.add("B2");
@@ -97,9 +99,9 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation5() throws Exception {
+    @Order(7)
+    public void checkSeatAllocationForFifthRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("B4");
         expectedList.add("B5");
@@ -113,9 +115,9 @@ public class CinnamonMovieTheatreTest {
     }
 
     @Test
-    public void checkSeatAllocation6() throws Exception {
+    @Order(8)
+    public void checkSeatAllocationForSixthRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("C2");
         expectedList.add("C3");
@@ -129,9 +131,9 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation7() throws Exception {
+    @Order(9)
+    public void checkSeatAllocationForSeventhRequest() throws Exception {
         //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
         List expectedList = new ArrayList();
         expectedList.add("C4");
         expectedList.add("C5");
@@ -145,10 +147,8 @@ public class CinnamonMovieTheatreTest {
 
 
     @Test
-    public void checkSeatAllocation8() {
-        //Arrange
-        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
-
+    @Order(10)
+    public void checkSeatAllocationWhenSeatsAreFull() {
         //Act and assert
         assertThrows(Exception.class, () -> {
             theatreSeatAllocation.allocateSeats(2);
