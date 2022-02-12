@@ -29,4 +29,17 @@ public class CinnamonMovieTheatreTest {
         //Assert
         assertEquals(false, isValidInput);
     }
+
+
+    @Test
+    public void checkNumberOfSeatsAvailableAtTheBeginning() {
+        //Arrange
+        TheatreSeatAllocation theatreSeatAllocation = new TheatreSeatAllocation();
+
+        //Act
+        int seatsAvailable = theatreSeatAllocation.seatListCreation().size();
+
+        //Assert
+        assertEquals(15, seatsAvailable);
+    }
 }
