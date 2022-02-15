@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,119 +36,50 @@ public class CinnamonMovieTheatreTest {
         assertEquals(false, isValidInput);
     }
 
-
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {2, 2, 3, 1, 1, 3, 1})
     @Order(3)
-    public void checkSeatAllocationForFirstRequest() throws Exception {
+    public void checkSeatAllocationForParameterizedInput(int seats) throws Exception {
         //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("A1");
-        expectedList.add("A2");
+        int seatsAllocated = 0;
 
         //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(2);
+        List allocation = theatreSeatAllocation.allocateSeats(seats);
+        seatsAllocated = allocation.size();
 
         //Assert
-        assertEquals(expectedList, seatsAllocated);
+        assertEquals(seats, seatsAllocated);
     }
 
     @Test
     @Order(4)
-    public void checkSeatAllocationForSecondRequest() throws Exception {
+    public void checkSeatAllocationWhenOnlyTwoSeatsLeftAndThreeSeatsAreRequired() throws Exception {
         //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("A3");
-        expectedList.add("A4");
+        int seats = 3;
 
         //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(2);
+        List allocation = theatreSeatAllocation.allocateSeats(seats);
 
         //Assert
-        assertEquals(expectedList, seatsAllocated);
+        assertEquals(0, allocation.size());
     }
-
 
     @Test
     @Order(5)
-    public void checkSeatAllocationForThirdRequest() throws Exception {
+    public void checkSeatAllocationWhenOnlyTwoSeatsLeft() throws Exception {
         //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("A5");
+        int seats = 2;
 
         //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(1);
+        List allocation = theatreSeatAllocation.allocateSeats(seats);
 
         //Assert
-        assertEquals(expectedList, seatsAllocated);
+        assertEquals(seats, allocation.size());
     }
+
 
     @Test
     @Order(6)
-    public void checkSeatAllocationForFourthRequest() throws Exception {
-        //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("B1");
-        expectedList.add("B2");
-        expectedList.add("B3");
-
-        //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(3);
-
-        //Assert
-        assertEquals(expectedList, seatsAllocated);
-    }
-
-
-    @Test
-    @Order(7)
-    public void checkSeatAllocationForFifthRequest() throws Exception {
-        //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("B4");
-        expectedList.add("B5");
-        expectedList.add("C1");
-
-        //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(3);
-
-        //Assert
-        assertEquals(expectedList, seatsAllocated);
-    }
-
-    @Test
-    @Order(8)
-    public void checkSeatAllocationForSixthRequest() throws Exception {
-        //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("C2");
-        expectedList.add("C3");
-
-        //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(2);
-
-        //Assert
-        assertEquals(expectedList, seatsAllocated);
-    }
-
-
-    @Test
-    @Order(9)
-    public void checkSeatAllocationForSeventhRequest() throws Exception {
-        //Arrange
-        List expectedList = new ArrayList();
-        expectedList.add("C4");
-        expectedList.add("C5");
-
-        //Act
-        List seatsAllocated = theatreSeatAllocation.allocateSeats(2);
-
-        //Assert
-        assertEquals(expectedList, seatsAllocated);
-    }
-
-
-    @Test
-    @Order(10)
     public void checkSeatAllocationWhenSeatsAreFull() {
         //Act and assert
         assertThrows(Exception.class, () -> {

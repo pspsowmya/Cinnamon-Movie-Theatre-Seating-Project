@@ -44,6 +44,8 @@ public class TheatreSeatAllocation {
                     seatsAllocated.add(seatsAvailable.get(i));
                 }
                 seatsAvailable.removeAll(seatsAllocated);
+            } else if ((seatsAvailable.size() == 2 || seatsAvailable.size() == 1) && numberOfSeatsRequired >= 2) {
+                System.out.println("No. of seats left are: " + seatsAvailable.size() + " Please select another number of seats");
             } else {
                 throw new Exception("No seats left. Please try for another movie... !!");
             }
