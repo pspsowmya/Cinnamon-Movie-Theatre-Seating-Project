@@ -1,6 +1,6 @@
-**Cinnamon Movie Theatre Challenge Java**
+# Cinnamon Movie Theatre Challenge Java
 
-**About**
+## Overview 
 
 This repository contains the implementation of Cinnamon Movie Theatre Challenge. 
 The main aim of this challenge is to allocate seats to customers purchasing tickets for a movie in Cinnamon Theatre.
@@ -18,13 +18,13 @@ The program will allocate seats by filling in the auditorium from left to right,
 All the seats will be available for purchase when the program first begins. 
 When all the seats are filled in then the program throws an exception and terminates.
 
-**Implementation Details**
+### Implementation Details
 
 The solution has been developed using Test Driven Development Approach. 
 There is a test class which has all the methods to test the functionality.
 And a class called TheatreSeatAllocation where the logic has been implemented.
 
-**Instructions to run**
+## Instructions to run
 
 To run this project you need to fork the repository to your git account and clone it to your machine. 
 Once cloned you can run the tests using
