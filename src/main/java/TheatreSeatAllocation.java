@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class TheatreSeatAllocation {
 
@@ -10,7 +8,8 @@ public class TheatreSeatAllocation {
     static List<String> seatsAvailable = new LinkedList<>();
 
     //static block to create initial list of available seats
-    static {
+    public static void createSeats() {
+        seatsAvailable.clear();
         for (int i = 1; i <= NO_OF_ROWS; i++) {
             for (int j = 1; j <= NO_OF_COLUMNS; j++) {
                 if (i == 1) {
